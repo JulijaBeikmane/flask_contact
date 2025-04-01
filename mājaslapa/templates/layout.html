@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forma</title>
+</head>
+<body>
+    <a href="/">sākums</a>
+    <a href="/forma">Forma</a>
+    <a href="/atteli">Attēli</a>
+    <!-- <a href="{{ url_for('home', nr=1) }}">Atver sākumu</a> -->
+    <form action="/forma" method="post">
+        <label for="fname">Ievadi vārdu: </label>
+        <input type="text" name="name">
+        <label for="lname">Ievadi epastu: </label>
+        <input type="text" name="email">
+        <button type="submit" value="Login">Ok</button>
+    </form>
+    {% if iesniegt == True %}
+        <p>Paldies {{ name }}, jūsu e-pasts {{ email }} ir peiņemts</p>
+    {% endif %}
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<h1>Reģistrētie</h1>
+<!-- <ul>
+    {% for i in registretie %}
+    <li>{{ i }}</li>
+    {% endfor %}
+</ul> -->
+
+<table>
+    <thead>
+        <tr>
+            <th>Vārds</th>
+            <th>Sporta veids</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in registretie %}
+        <tr>
+            <td>{{ i }}</td>
+            <td>{{ registretie[i] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block body %}
+
+<h1>Reģistrācija</h1>
+<!-- <form action="/register" method="post">
+    <input type="text" name="name">
+    <select name="sports">
+        <option selected disabled>Sporta veids</option>
+        
+        {% for i in disciplina %}
+        <option value="{{ i }}">{{ i }}</option>
+        {% endfor %}
+        
+    </select>
+    <button type="submit">Reģistrēt</button>
+</form> -->
+
+<form action="/register" method="post">
+    <input type="text" name="name">
+   
+        <!-- <option value="Basketbols">Basketbols</option> -->
+        {% for i in disciplina %}
+        <input type="radio" name="sports" value="{{ i }}">{{ i }}
+        {% endfor %}
+        <!-- <option value="Paukošanās">Paukošanās</option> -->
+    <button type="submit">Reģistrēt</button>
+</form>
+
+{% endblock %}

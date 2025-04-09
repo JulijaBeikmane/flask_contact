@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visi vārdi</title>
+</head>
+<body>
+    <h2>Ievadītie vārdi</h2>
+
+    <!-- <ul>
+        {% for i in vardi %}
+        <li>{{ i[1] }} <a href="/dzest/{{ i[0] }}"
+            onclick="return confirm('Vai tiešām izdzēst?')"
+            >🗑️</a>
+        
+        <a href="/rediget/{{ i[0] }}">✏️</a></li>
+        {% endfor %}
+    </ul> -->
+
+   
+    <table frame="box">
+        <thead>
+            <tr>
+                <th>Vārds</th>
+                <th>Dzēst</th>
+                <th>Redigēt</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in vardi %}
+            <tr>
+                <td>{{ i[1] }}</td>
+                <td><a href="/dzest/{{ i[0] }}"
+                    onclick="return confirm('Vai tiešām izdzēst?')"
+                    >🗑️</a></td>
+                <td><a href="/rediget/{{ i[0] }}">✏️</a></li></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/">Atpakaļ uz sākumu</a>
+    
+</body>
+</html>

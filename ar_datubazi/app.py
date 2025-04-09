@@ -18,9 +18,41 @@ def iesniegt():
             conn.commit()
             conn.close()
         return redirect ('/')
-@app.route('/iesniegtie')
-def iesniegts():
-    return render_template ('iesniegta_info.html')
+    
+@app.route('/vardi')
+def paradi_vardus():
+    conn = sqlite3.connect('datubaze2.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, vards FROM vardi")
+    vardi = cursor.fetchall()
+    conn.close()
+    return render_template ('vardi.html', vardi=vardi)
+
+@app.route('/dzest/<int:id>')
+def dzest_vardu(id):
+    conn = sqlite3.connect('datubaze2.db')
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM vardi WHERE id=?", (id,))
+    conn.commit()
+    conn.close()
+    return redirect ('/vardi')
+
+@app.route('/rediget/<int:id>', methods = ['GET', 'POST'])
+def rediget_vardu(id):
+    conn = sqlite3.connect('datubaze2.db')
+    cursor = conn.cursor()
+    if request.method == 'POST':
+        new_name = request.form.get('name')
+        cursor.execute("UPDATE vardi SET vards=? WHERE id=?", (new_name, id))
+        conn.commit()
+        conn.close()
+        return redirect ('/vardi')
+    else:
+        cursor.execute("SELECT vards FROM vardi WHERE id=?", (id,))
+        vards = cursor.fetchone()
+        conn.commit()
+        conn.close()
+        return render_template ('rediget.html', vards=vards, id=id)
 
 if __name__ == "__main__":
     app.run(debug=True)

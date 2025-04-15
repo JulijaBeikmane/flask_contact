@@ -22,6 +22,13 @@ def event_detail(event_id):
     if not event:
         return "Tāda pasakuma nav", 404
     return render_template('event.html', event=event)
+
+@app.route('/kalendars')
+def calendars():
+    yy = 2023
+    mm = 4
+    cal = calendar.month(yy, mm)
+    return render_template('kalendars.html', yy=yy, mm=mm, cal=cal)
     
 @app.route('/booking/success')
 def booking_success():

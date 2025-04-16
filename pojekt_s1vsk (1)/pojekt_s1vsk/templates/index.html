@@ -1,15 +1,19 @@
 {% extends "layout.html" %}
+{% block title %}Sākumlapa{% endblock %}
 
-{% block title %}Главная{% endblock %}
-
-{% block content %}
-<h2>Ближайшие мероприятия</h2>
+{% block body %}
+<h1>Salaspils 1.vidusskola</h1>
+<div class="text-end">
+    <button type="button" class="btn btn-warning">Login</button>
+    <button type="button" class="btn btn-warning">Sign-up</button>
+</div>
+<h2>Tuvākie pasākumi</h2>
 <div class="event-grid">
     {% for event in events[:2] %}
     <div class="event-card">
         <img src="{{ event.poster }}" alt="{{ event.title }}">
         <h3>{{ event.title }}</h3>
-        <a href="{{ url_for('event_detail', event_id=event.id) }}">Подробнее</a>
+        <a href="{{ url_for('event_detail', event_id=event.id) }}">Sīkāk info</a>
     </div>
     {% endfor %}
 </div>
